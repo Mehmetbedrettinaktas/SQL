@@ -337,11 +337,11 @@ SELECT * from personel where id ='1001' or id='1002'or id='1004';
 --2. Yol 
 select * from personel where id in ('1001','1002','1004');
  
- --- bundan sonrasini calistirmadim
+
 /*
 SELECT - LIKE kosulu 
 LIKE: Sorgulama yaparken belirli kalip ifadeleri kullanabilmemizi saglar
-LIKE: Sorgulama yaparken buyuk/ kucuk harfe duyarsiz olarak eslestirir
+ILIKE: Sorgulama yaparken buyuk/ kucuk harfe duyarsiz olarak eslestirir
 LIKE : ~~
 ILIKE : ~~*
 NOT LIKE : !~~

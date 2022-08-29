@@ -54,8 +54,8 @@ INSERT INTO kelimeler VALUES (1001, 'hot', 3);
   -- REGEX ile 
   select * from kelimeler where kelime ~* 'h[oi](.*)' -- Regex'te ".(nokta) bir kareteri temsil eder" -- 'h[oi] ilk harfi h ikinci harfi o veya i '
   /*
-  LIKE : ~~
-ILIKE : ~~*
+  LIKE : ~~ --> sadece kucuk harfler 
+ILIKE : ~~* --> hem kucuk hemde buyuk harfleri 
 NOT LIKE : !~~
 NOT ILIKE :!~~*
   */

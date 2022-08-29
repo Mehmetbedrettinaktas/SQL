@@ -1,3 +1,5 @@
+-- DML --> Tablodaki verileri gunceler 
+
 CREATE TABLE tedarikciler -- parent
 (
 vergi_no int PRIMARY KEY,
@@ -9,7 +11,6 @@ INSERT INTO tedarikciler VALUES (101, 'IBM', 'Kim Yon');
 INSERT INTO tedarikciler VALUES (102, 'Huawei', 'Çin Li');
 INSERT INTO tedarikciler VALUES (103, 'Erikson', 'Maki Tammen');
 INSERT INTO tedarikciler VALUES (104, 'Apple', 'Adam Eve');
-
 
 
 CREATE TABLE urunler -- child
@@ -33,39 +34,46 @@ INSERT INTO urunler VALUES(104, 1007,'Phone', 'Aslan Yılmaz');
 select * from tedarikciler;
 select * from urunler;
 
+
 --  vergi_no’su 102 olan tedarikcinin firma ismini 'Vestel' olarak güncelleyeniz.
-update tedarikciler   
-set firma_ismi='Vestel' where vergi_no=102; -- set ayarla demek
+update  tedarikciler 
+set firma_ismi ='Vestel' where vergi_no=102;  -- tedarikcileri tablosunu update (guncelle) set(ayarla) whwre (yalniz) vergi_no= 102 olan
 
 -- vergi_no’su 101 olan tedarikçinin firma ismini 'casper' ve irtibat_ismi’ni 'Ali Veli' olarak güncelleyiniz.
 update tedarikciler
-set firma_ismi='casper', irtibat_ismi='Ali Veli' where vergi_no=101; -- &  and te hata veriyor o yuzden , kullaniyoruz
+set firma_ismi='casper', irtibat_ismi='Ali Veli' where vergi_no=101;
 
 --  urunler tablosundaki 'Phone' değerlerini 'Telefon' olarak güncelleyiniz.
 update urunler
-set urun_isim='TELEFON'
-where urun_isim='Phone';
+set  urun_isim='TELEFON'
+where urun_isim ='Phone';
 
 --  urunler tablosundaki urun_id değeri 1004'ten büyük olanların urun_id’sini 1 arttırın.
-update urunler
-set urun_id= urun_id+1 where urun_id > 1004;
+ update urunler 
+ set urun_id=urun_id+1 where urun_id>1004;
 
---  urunler tablosundaki tüm ürünlerin urun_id değerini ted_vergino sutun değerleri ile toplayarak güncelleyiniz.
-update urunler 
-set urun_id=ted_vergino + urun_id;
--- butun degerleri istedigimiz icin WHERE koymadik degil mi hocam
+ --  urunler tablosundaki tüm ürünlerin urun_id değerini ted_vergino sutun değerleri ile toplayarak güncelleyiniz.
+
+ update urunler
+ set urun_id= urun_id +ted_vergino;
+
 
 --urunler tablosundan Ali Bak’in aldigi urunun ismini, tedarikci tablosunda irtibat_ismi
 -- 'Adam Eve' olan firmanın ismi (firma_ismi) ile degistiriniz.
 -- Bu soruda tedarikciler ve urunler tablosunu yeniden olusturduk
-update urunler 
-set urun_isim=(select firma_ismi from tedarikciler where irtibat_ismi='Adam Eve')
+
+update urunler
+set urun_isim =(select firma_ismi from tedarikciler where irtibat_ismi='Adam Eve')
 where musteri_isim='Ali Bak';
 
-select * from urunler;
-select * from tedarikciler;
 
--- Urunler tablosunda laptop satin alan musterilerin ismini, firma_ismi Apple’in irtibat_isim'i ile degistirin.
-update urunler 
-set musteri_isim=(select irtibat_ismi from tedarikciler where firma_ismi='Apple' )
-where urun_isim='Laptop';								-- yalniz firma ismi Apple olan
+
+
+
+
+
+
+
+
+
+
