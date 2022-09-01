@@ -16,7 +16,7 @@ select * from kisiler order by maas desc limit 3;
 -- En yüksek maaşı alan 4. 5.  6. kişilerin bilgilerini listeleyiniz
 select * from kisiler order by maas desc limit 3 offset 3; -- offset 3'--> ilik 3'ten sonrasini getir
 -- order by ile dogal siralamayi yaptik, desc ile buyukten kucuge dogru tersten siraladik limit 3 ile 3 kisiyi getir
--- yalniz offset 3 ile yalniz ilik 3'ten sonrasinigetir
+-- yalniz offset 3 ile yalniz ilik 3'ten sonrasini getirdik 
 
 
 

@@ -1,4 +1,4 @@
--- SUBQUERIES --> SORGU icinde calisan  SORGUYA(Alt sorgu) deni
+-- SUBQUERIES --> SORGU icinde calisan  SORGUYA(Alt sorgu) denir
 
 CREATE TABLE calisanlar2
 (
@@ -28,33 +28,20 @@ INSERT INTO markalar VALUES(101, 'Pierre Cardin', 18000);
 INSERT INTO markalar VALUES(102, 'Adidas', 10000);
 INSERT INTO markalar VALUES(103, 'LCWaikiki', 21000);
 
-select * from calisanlar2;
-select * from markalar;
-
--- calisan sayisi 15.000’den cok olan markalarin isimlerini ve bu markada calisanlarin isimlerini ve maaşlarini listeleyin.
-
-select isim,maas,isyeri from calisanlar2 
-where isyeri In (select marka_isim from markalar where calisan_sayisi >15000);
--- yalniz isyerin (marka_ismi getir markalardan yalniz calisan_sayisi> 1500 olandan)den getir.
+-- calisan sayisi 15.000’den cok olan markalarin isimlerini 
+-- ve bu markada calisanlarin isimlerini ve maaşlarini listeleyin.
+select isim, maas, isyeri from calisanlar2
+where isyeri in (select marka_isim from markalar where calisan_sayisi>15000) -- burasi bize 101 Piercardin ve 103 LCwaikiki getirdi
+-- in ayni stundaki birden cok veryi ayni anda cagirmamizi saglar
 
 -- marka_id’si 101’den büyük olan marka çalişanlarinin isim, maaş ve şehirlerini listeleyiniz.
-
-select isim, maas, sehir from calisanlar2 -- > select listeler 
+select isim, maas, sehir from calisanlar2
 where isyeri in(select marka_isim from markalar where marka_id>101);
 
 -- Ankara’da calisani olan markalarin marka id'lerini ve calisan sayilarini listeleyiniz.
-	select marka_id,calisan_sayisi from markalar
-	where marka_isim in(select isyeri from calisanlar2 where sehir='Ankara');
-					-- burada sarti diger listeden cekiyoruz
+select marka_id, calisan_sayisi from markalar
+where marka_isim in (select isyeri from calisanlar2 where sehir='Ankara');
 
 
-
-
-
-
-
-
-
-
-
-
+select * from calisanlar2;
+select * from markalar;

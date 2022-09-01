@@ -28,7 +28,7 @@ select count(maas) from calisanlar2;
 
 -- Her markanin ismini, calisan sayisini ve o markaya ait calisanlarin toplam maaşini listeleyiniz
 
-select marka_isim,calisan_sayisi,(select sum(maas)from calisanlar2 where marka_isim=isyeri)
+select marka_isim,calisan_sayisi ,(select sum(maas)from calisanlar2 where marka_isim=isyeri)
   as toplam_maas from markalar;
 --as ile --> gecici bir isim belirledik
 --ALIAS (AS) toplada geçici isim vermek istersek koşuldan sonra AS sutun_isim olarak kullanılır
@@ -41,7 +41,7 @@ from markalar;
 -- Her markanin id’sini, ismini ve toplam kaç şehirde bulunduğunu listeleyen bir SORGU yaziniz.
 select marka_id,marka_isim,(select count(sehir) from calisanlar2 where marka_isim=isyeri) 
 as sehir_sayisi from markalar;
--- sehir_sayisi diye bir marka olturduk
+-- sehir_sayisi diye bir stun olusturduk
 
 
 --Interview Question: En yüksek ikinci maas değerini çağırın.
@@ -62,7 +62,9 @@ select max(maas)as enYuksek_ucuncu_maas from calisanlar2 where
 maas<(select max(maas) from calisanlar2 where maas<(select max(maas) from calisanlar2));
 
 
-
+-- En dusuk ucuncu maas degerini bulunuz
+select min(maas) as endusuk_ucuncu_maas from calisanlar2
+where maas> (select min(maas) from calisanlar2 where maas >(select min(maas) from calisanlar2));
 
 
 

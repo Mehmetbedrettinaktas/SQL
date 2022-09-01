@@ -1,0 +1,8 @@
+"ssn","isim","adres"
+"123456789","Ali Can","Istanbul"
+"234567890","Veli Cem","Ankara"
+"345678901","Mine Bulut","Izmir"
+"456789012",NULL,"Bursa"
+"567890123",NULL,"Denizli"
+NULL,NULL,"Sakarya"
+"999111222",NULL,NULL
